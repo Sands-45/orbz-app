@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.morphing-circle {
+    border-radius: 48% 52% 68% 32% / 54% 58% 42% 46%;
+}

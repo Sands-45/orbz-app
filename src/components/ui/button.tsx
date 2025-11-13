@@ -1,141 +1,71 @@
-// AlignUI Button v0.0.0
+/* eslint-disable react-refresh/only-export-components */
+import * as React from "react"
+import { mergeProps } from "@base-ui-components/react/merge-props"
+import { useRender } from "@base-ui-components/react/use-render"
+import { cva, type VariantProps } from "class-variance-authority"
 
-import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import { cn } from "@/lib/utils"
 
-import { type PolymorphicComponentProps } from '@/lib/polymorphic';
-import { recursiveCloneChildren } from '@/lib/recursive-clone-children';
-import { tv, type VariantProps } from '@/lib/tv';
-
-const BUTTON_ROOT_NAME = 'ButtonRoot';
-const BUTTON_ICON_NAME = 'ButtonIcon';
-
-const fancyButtonVariants = tv({
-  slots: {
-    root: [
-      // base
-      'group relative inline-flex items-center justify-center whitespace-nowrap text-label-sm outline-none',
-      'transition duration-200 ease-out',
-      // focus
-      'focus:outline-none',
-      // disabled
-      'disabled:pointer-events-none disabled:text-text-disabled-300',
-      'disabled:bg-bg-weak-50 disabled:bg-none disabled:shadow-none disabled:before:hidden disabled:after:hidden',
-    ],
-    icon: 'relative z-10 size-5 shrink-0',
-  },
-  variants: {
-    variant: {
-      neutral: {
-        root: 'bg-bg-strong-950 text-text-white-0 shadow-fancy-buttons-neutral',
+const buttonVariants = cva(
+  "relative inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-lg border bg-clip-padding text-sm font-medium whitespace-nowrap transition-shadow outline-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-64 pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  {
+    variants: {
+      variant: {
+        default:
+          "border-primary bg-primary text-primary-foreground shadow-xs shadow-primary/24 not-disabled:inset-shadow-[0_1px_--theme(--color-white/16%)] hover:bg-primary/90 [&:is(:active,[data-pressed])]:inset-shadow-[0_1px_--theme(--color-black/8%)] [&:is(:disabled,:active,[data-pressed])]:shadow-none",
+        outline:
+          "border-border bg-background shadow-xs not-disabled:not-active:not-data-pressed:before:shadow-[0_1px_--theme(--color-black/4%)] dark:bg-input/32 dark:not-in-data-[slot=group]:bg-clip-border dark:not-disabled:before:shadow-[0_-1px_--theme(--color-white/4%)] dark:not-disabled:not-active:not-data-pressed:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:disabled,:active,[data-pressed])]:shadow-none [&:is(:hover,[data-pressed])]:opacity-80",
+        secondary:
+          "border-secondary bg-secondary text-secondary-foreground hover:bg-secondary/90 data-pressed:bg-secondary/90",
+        destructive:
+          "border-destructive bg-destructive text-white shadow-xs shadow-destructive/24 not-disabled:inset-shadow-[0_1px_--theme(--color-white/16%)] hover:bg-destructive/90 [&:is(:active,[data-pressed])]:inset-shadow-[0_1px_--theme(--color-black/8%)] [&:is(:disabled,:active,[data-pressed])]:shadow-none",
+        "destructive-outline":
+          "border-border bg-transparent text-destructive-foreground shadow-xs not-disabled:not-active:not-data-pressed:before:shadow-[0_1px_--theme(--color-black/4%)] dark:bg-input/32 dark:not-in-data-[slot=group]:bg-clip-border dark:not-disabled:before:shadow-[0_-1px_--theme(--color-white/4%)] dark:not-disabled:not-active:not-data-pressed:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:disabled,:active,[data-pressed])]:shadow-none [&:is(:hover,[data-pressed])]:border-destructive/32 [&:is(:hover,[data-pressed])]:bg-destructive/4",
+        ghost: "border-transparent hover:bg-accent data-pressed:bg-accent",
+        link: "border-transparent underline-offset-4 hover:underline",
       },
-      primary: {
-        root: 'bg-primary-base text-static-white shadow-fancy-buttons-primary',
-      },
-      destructive: {
-        root: 'bg-error-base text-static-white shadow-fancy-buttons-error',
-      },
-      basic: {
-        root: [
-          // base
-          'bg-bg-white-0 text-text-sub-600 shadow-fancy-buttons-stroke',
-          // hover
-          'hover:bg-bg-weak-50 hover:text-text-strong-950 hover:shadow-none',
-        ],
+      size: {
+        default:
+          "min-h-8 px-[calc(--spacing(3)-1px)] py-[calc(--spacing(1.5)-1px)]",
+        xs: "min-h-6 gap-1 rounded-md px-[calc(--spacing(2)-1px)] py-[calc(--spacing(1)-1px)] text-xs before:rounded-[calc(var(--radius-md)-1px)] [&_svg:not([class*='size-'])]:size-3",
+        sm: "min-h-7 gap-1.5 px-[calc(--spacing(2.5)-1px)] py-[calc(--spacing(1)-1px)]",
+        lg: "min-h-9 px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2)-1px)]",
+        xl: "min-h-10 px-[calc(--spacing(4)-1px)] py-[calc(--spacing(2)-1px)] text-base [&_svg:not([class*='size-'])]:size-4.5",
+        icon: "size-8",
+        "icon-xs":
+          "size-6 rounded-md before:rounded-[calc(var(--radius-md)-1px)]",
+        "icon-sm": "size-7",
+        "icon-lg": "size-9",
+        "icon-xl": "size-10 [&_svg:not([class*='size-'])]:size-4.5",
       },
     },
-    size: {
-      medium: {
-        root: 'h-10 gap-3 rounded-10 px-3.5',
-        icon: '-mx-1',
-      },
-      small: {
-        root: 'h-9 gap-3 rounded-lg px-3',
-        icon: '-mx-1',
-      },
-      xsmall: {
-        root: 'h-8 gap-3 rounded-lg px-2.5',
-        icon: '-mx-1',
-      },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
     },
-  },
-  compoundVariants: [
-    {
-      variant: ['neutral', 'primary', 'destructive'],
-      class: {
-        root: [
-          // before
-          'before:pointer-events-none before:absolute before:inset-0 before:z-10 before:rounded-[inherit]',
-          'before:bg-gradient-to-b before:p-px',
-          'before:from-static-white/[.12] before:to-transparent',
-          // before mask
-          'before:[mask-clip:content-box,border-box] before:[mask-composite:exclude] before:[mask-image:linear-gradient(#fff_0_0),linear-gradient(#fff_0_0)]',
-          // after
-          'after:absolute after:inset-0 after:rounded-[inherit] after:bg-gradient-to-b after:from-static-white after:to-transparent',
-          'after:pointer-events-none after:opacity-[.16] after:transition after:duration-200 after:ease-out',
-          // hover
-          'hover:after:opacity-[.24]',
-        ],
-      },
-    },
-  ],
-  defaultVariants: {
-    variant: 'neutral',
-    size: 'medium',
-  },
-});
+  }
+)
 
-type ButtonSharedProps = VariantProps<typeof fancyButtonVariants>;
-
-type ButtonProps = VariantProps<typeof fancyButtonVariants> &
-  React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    asChild?: boolean;
-  };
-
-const ButtonRoot = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ asChild, children, variant, size, className, ...rest }, forwardedRef) => {
-    const uniqueId = React.useId();
-    const Component = asChild ? Slot : 'button';
-    const { root } = fancyButtonVariants({ variant, size });
-
-    const sharedProps: ButtonSharedProps = {
-      variant,
-      size,
-    };
-
-    const extendedChildren = recursiveCloneChildren(
-      children as React.ReactElement[],
-      sharedProps,
-      [BUTTON_ICON_NAME],
-      uniqueId,
-      asChild,
-    );
-
-    return (
-      <Component
-        ref={forwardedRef}
-        className={root({ class: className })}
-        {...rest}
-      >
-        {extendedChildren}
-      </Component>
-    );
-  },
-);
-ButtonRoot.displayName = BUTTON_ROOT_NAME;
-
-function ButtonIcon<T extends React.ElementType>({
-  className,
-  variant,
-  size,
-  as,
-  ...rest
-}: PolymorphicComponentProps<T, ButtonSharedProps>) {
-  const Component = as || 'div';
-  const { icon } = fancyButtonVariants({ variant, size });
-
-  return <Component className={icon({ class: className })} {...rest} />;
+interface ButtonProps extends useRender.ComponentProps<"button"> {
+  variant?: VariantProps<typeof buttonVariants>["variant"]
+  size?: VariantProps<typeof buttonVariants>["size"]
 }
-ButtonIcon.displayName = BUTTON_ICON_NAME;
 
-export { ButtonRoot as Root, ButtonIcon as Icon };
+function Button({ className, variant, size, render, ...props }: ButtonProps) {
+  const typeValue: React.ButtonHTMLAttributes<HTMLButtonElement>["type"] =
+    render ? undefined : "button"
+
+  const defaultProps = {
+    "data-slot": "button",
+    className: cn(buttonVariants({ variant, size, className })),
+    type: typeValue,
+  }
+
+  return useRender({
+    defaultTagName: "button",
+    render,
+    props: mergeProps<"button">(defaultProps, props),
+  })
+}
+
+export { Button, buttonVariants }

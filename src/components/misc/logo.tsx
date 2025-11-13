@@ -13,7 +13,7 @@ const Logo = ({ className }: LogoProps) => {
         src="/logos/logo.svg"
         alt="Orb"
         className={cn(
-          "size-16 rounded-xl shadow-sm bg-white border-2 border-white object-cover object-center",
+          "size-16 rounded-xl shadow-sm bg-white object-cover object-center",
           className,
         )}
       />
