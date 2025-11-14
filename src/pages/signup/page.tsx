@@ -45,7 +45,7 @@ const Signup = () => {
         <Button
           onClick={() => navigate("/signin")}
           variant={"outline"}
-          className="mt-4 w-full h-12 text-sm font-medium text-primary"
+          className="mt-4 w-full h-12 text-sm font-medium text-foreground"
         >
           Signin
         </Button>

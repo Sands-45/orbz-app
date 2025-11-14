@@ -4,11 +4,12 @@ import { Link } from "react-router";
 
 interface LogoProps {
   className?: string;
+  to?: string;
 }
 
-const Logo = ({ className }: LogoProps) => {
+const Logo = ({ className, to }: LogoProps) => {
   return (
-    <Link to="" className="contents">
+    <Link to={to || "/"} className="contents">
       <img
         src="/logos/logo.svg"
         alt="Orb"

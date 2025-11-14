@@ -26,7 +26,7 @@ const Signin = () => {
         <div className="mt-4 w-full grid gap-2">
           {signin_options.map((option) => (
             <FancyButton
-              onClick={() => navigate("/my-orbz")}
+              onClick={() => navigate("/")}
               key={option.title}
               variant={"primary"}
               className="w-full h-12 text-sm font-medium"
@@ -47,7 +47,7 @@ const Signin = () => {
         <Button
           onClick={() => navigate("/signup")}
           variant={"outline"}
-          className="mt-4 w-full h-12 text-sm font-medium text-primary"
+          className="mt-4 w-full h-12 text-sm font-medium text-foreground"
         >
           Signup
         </Button>
