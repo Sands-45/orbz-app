@@ -15,10 +15,10 @@ const MainShell = () => {
       flex-col justify-center"
     >
       <Topnav />
-      <div className="w-full h-full flex items-center">
+      <div className="w-full h-full flex items-center overflow-hidden">
         <Sidebar />
 
-        <div className="w-full h-full overflow-hidden flex flex-col overflow-y-auto no-scrollbar">
+        <div className="w-full h-full overflow-hidden flex flex-col overflow-y-auto">
           <Outlet />
         </div>
       </div>

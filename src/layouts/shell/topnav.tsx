@@ -4,14 +4,11 @@ import { formatDateTime } from "@/lib/utils";
 import * as React from "react";
 
 const Topnav = () => {
-  const currentTime = React.useMemo(
-    () => formatDateTime({ format: "p" }),
-    [],
-  );
+  const currentTime = React.useMemo(() => formatDateTime({ format: "p" }), []);
   // JSX Code =================
   return (
     <nav
-      className="w-full h-14 bg-background/50 borer-b border-border hover:border-primary/50
+      className="w-full h-14 z-10 backdrop-blur-[2px] bg-background/50 borer-b border-border hover:border-primary/50
       transition-all shrink-0 sticky top-0 px-6 flex items-center gap-2 overflow-hidden"
     >
       <Button

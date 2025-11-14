@@ -16,7 +16,7 @@ const MyOrbz = () => {
       </p>
 
       {/* Orbz */}
-      <div className="mt-12 w-full flex items-center gap-4">
+      <div className="mt-12 w-full flex flex-wrap items-center gap-4">
         <OrbCard />
         <NewOrb />
       </div>

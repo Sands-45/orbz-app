@@ -187,7 +187,7 @@
     --color-earthy-forest-300: oklch(0.594 0.058 162.3);
     --color-earthy-forest-200: oklch(0.662 0.064 162.3);
     --color-earthy-forest-100: oklch(0.731 0.071 162.3);
-    --color-earthy-forest-50: oklch(0.799 0.077 162.3);
+    --color-earthy-forest-50: oklch(0.854 0.020 133.1);
 
     /* Dynamic Neutral Colors */
     --color-neutral-950: var(--color-gray-950);
