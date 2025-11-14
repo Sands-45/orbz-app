@@ -9,9 +9,9 @@ const OrbCard = () => {
   // JSX Code =============
   return (
     <MotionCard
-      initial={{ opacity: 0, y: 10, x: -20 }}
-      exit={{ opacity: 0, y: 10, x: -20 }}
-      animate={{ opacity: 1, y: 0, x: 0 }}
+      initial={{ opacity: 0, y: 10 }}
+      exit={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, type: "keyframes" }}
       className="p-5 h-56 w-48 gap-3"
     >

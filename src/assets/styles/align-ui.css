@@ -207,9 +207,9 @@
     --color-neutral-alpha-10: var(--color-gray-alpha-10);
 
     /* Dynamic Primary Colors */
-    --color-primary-dark: var(--color-earthy-forest-900);
-    --color-primary-darker: var(--color-earthy-forest-800);
-    --color-primary-base: var(--color-earthy-forest-700);
+    --color-primary-dark: var(--color-earthy-forest-800);
+    --color-primary-darker: var(--color-earthy-forest-700);
+    --color-primary-base: var(--color-earthy-forest-600);
     --color-primary-alpha-24: var(--color-earthy-forest-alpha-24);
     --color-primary-alpha-16: var(--color-earthy-forest-alpha-16);
     --color-primary-alpha-10: var(--color-earthy-forest-alpha-10);
