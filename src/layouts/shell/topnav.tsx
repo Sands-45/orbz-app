@@ -24,7 +24,7 @@ const Topnav = () => {
       <Button
         variant={"ghost"}
         size={"icon"}
-        className="hover:bg-transparent text-primary"
+        className="hover:bg-transparent text-primary dark:text-foreground"
       >
         <Inbox className="size-5" />
       </Button>

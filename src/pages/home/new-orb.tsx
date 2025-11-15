@@ -28,7 +28,7 @@ const NewOrb = () => {
       <Button
         variant="outline"
         size="icon"
-        className="size-10 shrink-0 rounded-full hover:rotate-180 duration-500 transition-all"
+        className="size-10 shrink-0 before:hidden rounded-full hover:rotate-180 duration-500 transition-all"
       >
         <Plus className="size-5 text-muted-foreground" />
       </Button>

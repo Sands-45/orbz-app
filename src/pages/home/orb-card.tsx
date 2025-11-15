@@ -28,7 +28,7 @@ const OrbCard = () => {
       <Button
         variant="outline"
         size="icon"
-        className="size-10 shrink-0 rounded-full hover:rotate-45 duration-500 transition-all"
+        className="size-10 shrink-0 rounded-full before:hidden hover:rotate-45 duration-500 transition-all"
       >
         <ArrowUpRight className="size-5 text-muted-foreground" />
       </Button>

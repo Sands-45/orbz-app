@@ -11,7 +11,7 @@ const Sidebar = () => {
         <Button
           variant={"outline"}
           size={"icon"}
-          className="size-10 rounded-full text-primary dark:text-muted-foreground hover:scale-110
+          className="size-10 rounded-full before:hidden text-primary dark:text-muted-foreground hover:scale-110
           transition-all duration-500"
         >
           <Bolt className="size-5" />
@@ -19,7 +19,7 @@ const Sidebar = () => {
         <Button
           variant={"outline"}
           size={"icon"}
-          className="size-10 rounded-full bg-primary"
+          className="size-10 rounded-full before:hidden bg-primary"
         ></Button>
       </div>
     </aside>

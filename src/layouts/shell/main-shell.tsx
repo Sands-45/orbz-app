@@ -11,7 +11,7 @@ const MainShell = () => {
       exit={{ x: 30, opacity: 0 }}
       animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
       transition={{ duration: 0.5, type: "keyframes" }}
-      className="fixed inset-0 bg-linear-to-b from-main-background to-zinc-200 overflow-hidden flex
+      className="fixed inset-0 bg-linear-to-b from-main-background to-zinc-200 dark:to-main-background overflow-hidden flex
       flex-col justify-center"
     >
       <Topnav />
