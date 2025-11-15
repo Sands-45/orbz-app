@@ -1,6 +1,7 @@
 @import "./align-ui.css";
 @import "./scrollbar.css";
 @import "./custom.css";
+@import "./fonts.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -122,7 +123,6 @@
 
 /* Body Styles */
 body {
-    font-family: PublicSans, Inter, Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -136,6 +136,6 @@ body {
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-main-background text-foreground font-sans;
+    @apply bg-main-background text-foreground font-sans selection:bg-primary selection:text-white;
     }
 }

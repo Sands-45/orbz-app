@@ -14,7 +14,7 @@ const Topnav = () => {
       <Button
         variant={"ghost"}
         className="w-full h-full shadow-none justify-start rounded-none text-muted-foreground/50
-        font-medium text-base px-0 hover:bg-transparent shrink"
+        font-normal text-base px-0 hover:bg-transparent shrink"
       >
         What are you looking for?
       </Button>
